@@ -10,4 +10,4 @@ This project is an alteration of Microsoft's TextWorld modified to generate runn
 **Bibi Dang**
 
 ## License
-This project is licensed under the MIT License, same as the original TextWorld program.
+This project is licensed under the GNU Public License v3.
