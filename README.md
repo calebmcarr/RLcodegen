@@ -6,6 +6,7 @@ This project is an alteration of Microsoft's TextWorld modified to generate runn
 
 ## Authors
 **Caleb Carr** 
+
 **Bibi Dang**
 
 ## License
