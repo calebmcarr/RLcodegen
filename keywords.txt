@@ -1,0 +1,16 @@
+if
+else
+for
+=
++
+-
+/
+*
+*space*
+*enter*
+*tab*
+(
+)
+"
+*0-9*
+:
