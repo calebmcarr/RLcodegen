@@ -1,0 +1,19 @@
+games.ulx..........  	avg. steps:  43.0; avg. score: 12.0 / 12.
+games.ulx..........  	avg. steps:  54.3; avg. score: 11.8 / 12.
+Training
+1000. reward: 2.549  policy: 16.931  value: 388.254  entropy: 1.723  confidence: 0.185  score: 12  vocab: 99
+2000. reward: 2.389  policy: 13.023  value: 323.182  entropy: 1.712  confidence: 0.188  score: 12  vocab: 108
+3000. reward: 2.927  policy: 18.458  value: 429.068  entropy: 1.705  confidence: 0.191  score: 12  vocab: 115
+4000. reward: 3.148  policy: 18.472  value: 453.067  entropy: 1.685  confidence: 0.201  score: 12  vocab: 124
+5000. reward: 2.906  policy: 18.997  value: 484.504  entropy: 1.648  confidence: 0.207  score: 12  vocab: 128
+6000. reward: 3.154  policy: 15.790  value: 458.531  entropy: 1.638  confidence: 0.213  score: 12  vocab: 135
+7000. reward: 3.742  policy: 23.341  value: 573.420  entropy: 1.666  confidence: 0.214  score: 12  vocab: 141
+8000. reward: 4.399  policy: 25.855  value: 716.019  entropy: 1.579  confidence: 0.246  score: 12  vocab: 145
+9000. reward: 3.884  policy: 20.642  value: 576.174  entropy: 1.554  confidence: 0.245  score: 12  vocab: 148
+10000. reward: 3.438  policy: 15.645  value: 498.672  entropy: 1.511  confidence: 0.274  score: 12  vocab: 151
+11000. reward: 3.180  policy: 19.986  value: 548.405  entropy: 1.543  confidence: 0.261  score: 12  vocab: 153
+12000. reward: 4.780  policy: 27.367  value: 757.878  entropy: 1.487  confidence: 0.276  score: 12  vocab: 154
+13000. reward: 4.760  policy: 23.349  value: 704.738  entropy: 1.463  confidence: 0.291  score: 12  vocab: 154
+14000. reward: 5.134  policy: 26.966  value: 805.474  entropy: 1.433  confidence: 0.300  score: 12  vocab: 154
+Trained in 152.04 secs
+games.ulx..........  	avg. steps:  27.1; avg. score: 12.0 / 12.

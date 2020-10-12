@@ -261,7 +261,7 @@ candy:chocolate bar;gummy bear;candy bar;licorice strip;cookie
 #-------------------
 (k):#(k)_adj# | #(k)_noun#
 (k)_adj:iron;brass;metal;rusty;steel;iron;aluminum;copper
-(k)_noun:key;keycard;latchkey;passkey
+(k)_noun:a;b;c;d;e;f;g;h;i;j;k;l;m;n;o;p;q;r;s;t;u;v;w;x;y;z
 #Object Descriptor Functions
 #---------------------------
 (P)_desc:It's you.

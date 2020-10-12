@@ -1,0 +1,11 @@
+games.ulx..........  	avg. steps:  25.8; avg. score:  2.0 / 2.
+games.ulx..........  	avg. steps:  20.4; avg. score:  2.0 / 2.
+Training
+1000. reward: 3.523  policy: 23.498  value: 605.852  entropy: 1.650  confidence: 0.195  score: 2  vocab: 103
+2000. reward: 6.013  policy: 35.457  value: 954.631  entropy: 1.670  confidence: 0.195  score: 2  vocab: 114
+3000. reward: 6.352  policy: 36.151  value: 1087.091  entropy: 1.639  confidence: 0.207  score: 2  vocab: 120
+4000. reward: 6.807  policy: 41.636  value: 1194.164  entropy: 1.616  confidence: 0.210  score: 2  vocab: 122
+5000. reward: 8.507  policy: 40.447  value: 1520.763  entropy: 1.526  confidence: 0.256  score: 2  vocab: 122
+6000. reward: 10.550  policy: 52.062  value: 1912.477  entropy: 1.436  confidence: 0.298  score: 2  vocab: 122
+Trained in 75.65 secs
+games.ulx..........  	avg. steps:   5.6; avg. score:  2.0 / 2.

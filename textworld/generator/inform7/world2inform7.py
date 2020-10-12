@@ -8,6 +8,8 @@ import shutil
 import warnings
 import subprocess
 import textwrap
+import random
+import string
 from os.path import join as pjoin
 from typing import Iterable, Optional, List
 
@@ -130,7 +132,21 @@ class Inform7Game:
             obj_infos = self.entity_infos[obj.id]
             if not self.use_i7_description:
                 # Describe the object.
-                source += 'The description of {} is "{}".\n'.format(obj_infos.id, obj_infos.desc.replace("\n", "[line break]"))
+                a_ops = ["+", "-", "*", "/"]
+                b_ops = ["<", ">", "<=", ">=", "=="]
+
+                if obj_infos.desc == "if":
+                    source += 'The description of {} is "temp = {}[line break]if temp {} {}:[line break]        {} += temp".\n'.format(
+                        obj_infos.id, random.randrange(100), b_ops[random.randrange(0,4,1)], random.randrange(100), obj_infos.name)
+                elif obj_infos.desc == "for":
+                    source += 'The description of {} is "for count in range({}):[line break]        {} = {}{}{}".\n'.format(
+                        obj_infos.id, random.randrange(10), obj_infos.name, random.randrange(100), a_ops[random.randrange(0,3,1)], random.randrange(100))
+                elif obj_infos.desc == "variable":
+                    source += 'The description of {} is "{} = {}{}{}".\n'.format(obj_infos.id, obj_infos.name, random.randrange(100), 
+                        a_ops[random.randrange(0,3,1)], random.randrange(100))
+
+                #source += 'The description of {} is "{}".\n'.format(obj_infos.id, obj_infos.desc.replace("\n", "[line break]"))
+                #source += 'The description of {} is "for i in range({}):[line break]        {} = {}{}{}\n".\n'.format(obj_infos.id, random.randrange(10), obj_infos.name, random.randrange(100), operators[random.randrange(0,3,1)], random.randrange(100))  
                 source += 'The printed name of {} is "{}".\n'.format(obj_infos.id, obj_infos.name)
 
                 if obj_infos.indefinite:
@@ -167,9 +183,12 @@ class Inform7Game:
 
             if not self.use_i7_description:
                 # Describe the room.
-                room_desc = room_infos.desc
+                if room_infos.desc == "I":
+                    room_desc = "if _____"
+                else:
+                    room_desc = room_infos.desc
                 source += "The internal name of {} is \"{}\".\n".format(room.id, room_name)
-                source += "The printed name of {} is \"-= {} =-\".\n".format(room.id, str.title(room_name))
+                source += "The printed name of {} is \"{}\".\n".format(room.id, "\n")
 
                 parts = []
                 splits = re.split(r"\[end if\]", room_desc)
@@ -428,26 +447,10 @@ class Inform7Game:
         source += textwrap.dedent("""\
         Rule for printing the banner text:
             say "[fixed letter spacing]";
-            say "                    ________  ________  __    __  ________        [line break]";
-            say "                   |        \|        \|  \  |  \|        \       [line break]";
-            say "                    \$$$$$$$$| $$$$$$$$| $$  | $$ \$$$$$$$$       [line break]";
-            say "                      | $$   | $$__     \$$\/  $$   | $$          [line break]";
-            say "                      | $$   | $$  \     >$$  $$    | $$          [line break]";
-            say "                      | $$   | $$$$$    /  $$$$\    | $$          [line break]";
-            say "                      | $$   | $$_____ |  $$ \$$\   | $$          [line break]";
-            say "                      | $$   | $$     \| $$  | $$   | $$          [line break]";
-            say "                       \$$    \$$$$$$$$ \$$   \$$    \$$          [line break]";
-            say "              __       __   ______   _______   __        _______  [line break]";
-            say "             |  \  _  |  \ /      \ |       \ |  \      |       \ [line break]";
-            say "             | $$ / \ | $$|  $$$$$$\| $$$$$$$\| $$      | $$$$$$$\[line break]";
-            say "             | $$/  $\| $$| $$  | $$| $$__| $$| $$      | $$  | $$[line break]";
-            say "             | $$  $$$\ $$| $$  | $$| $$    $$| $$      | $$  | $$[line break]";
-            say "             | $$ $$\$$\$$| $$  | $$| $$$$$$$\| $$      | $$  | $$[line break]";
-            say "             | $$$$  \$$$$| $$__/ $$| $$  | $$| $$_____ | $$__/ $$[line break]";
-            say "             | $$$    \$$$ \$$    $$| $$  | $$| $$     \| $$    $$[line break]";
-            say "              \$$      \$$  \$$$$$$  \$$   \$$ \$$$$$$$$ \$$$$$$$ [line break]";
+            say "# -------------game.py------------[line break]";
+            say "# Authors: Caleb Carr and Bibi Dang[line break]";
+            say "# CS4033 Short RL Project[line break]";
             say "[variable letter spacing][line break]";
-            say "[objective][line break]".
 
         """)  # noqa: W605
 
@@ -467,6 +470,12 @@ class Inform7Game:
             rule succeeds.
 
         """)
+
+        #source += textwrap.dedent("""\
+        #Printing something (called target) is an activity.
+        #Rule for printing something:
+	#    say "Bibi printed (target)";
+        #""")
 
         # Disable implicitly taking something.
         source += textwrap.dedent("""\
@@ -560,8 +569,6 @@ class Inform7Game:
             remove the list of containers from L;
             remove the list of supporters from L;
             remove the list of doors from L;
-            if the number of entries in L is greater than 0:
-                say "There is [L with indefinite articles] on the floor.";
 
         """)
 
@@ -632,6 +639,17 @@ class Inform7Game:
 
         """)
 
+        source += textwrap.dedent("""\
+        A thing can be examined or unexamined.
+
+        Before taking something unexamined:
+            try examining the noun.
+
+        Carry out examining something:
+            now the noun is examined.
+
+        """)
+
         # Customize reporting of the "take" action.
         # Ref: http://inform7.com/learn/man/RB_6_8.html
         source += textwrap.dedent("""\
@@ -641,13 +659,13 @@ class Inform7Game:
             now previous locale is the holder of the noun.
 
         Report taking something from the location:
-            say "You pick up [the noun] from the ground." instead.
+            say "print([noun])" instead.
 
         Report taking something:
-            say "You take [the noun] from [the previous locale]." instead.
+            say "print([noun])" instead.
 
         Report dropping something:
-            say "You drop [the noun] on the ground." instead.
+            say "print([noun])" instead.
 
         """)
 
